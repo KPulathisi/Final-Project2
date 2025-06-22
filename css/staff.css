@@ -1,0 +1,201 @@
+:root {
+    --staff-primary: #7c2d12;
+    --staff-secondary: #dc2626;
+    --staff-accent: #f87171;
+    --staff-highlight: #fbbf24;
+    --staff-text: #FFFFFF;
+    --staff-dark: #333333;
+    --staff-success: #059669;
+    --staff-danger: #dc2626;
+    --staff-warning: #d97706;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--staff-dark);
+    background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    gap: 0;
+}
+
+.sidebar {
+    background: linear-gradient(180deg, var(--staff-primary), var(--staff-secondary));
+    color: var(--staff-text);
+    padding: 2rem 0;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 1.5rem;
+}
+
+.sidebar-header h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--staff-highlight);
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin: 0.2rem 0;
+}
+
+.sidebar-menu a {
+    display: block;
+    color: var(--staff-text);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-left-color: var(--staff-highlight);
+    transform: translateX(5px);
+}
+
+.sidebar-menu a.active {
+    background-color: var(--staff-highlight);
+    color: var(--staff-primary);
+    border-left-color: var(--staff-primary);
+    font-weight: bold;
+}
+
+.main-content {
+    padding: 2rem;
+    background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
+    background-attachment: fixed;
+}
+
+.dashboard-header {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.dashboard-header h2 {
+    color: var(--staff-primary);
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-top: 4px solid var(--staff-accent);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    color: var(--staff-primary);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--staff-accent), var(--staff-secondary));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(248, 113, 113, 0.3);
+}
+
+.table-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.table th {
+    background: linear-gradient(135deg, var(--staff-primary), var(--staff-secondary));
+    color: var(--staff-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table tr:hover {
+    background-color: #fef2f2;
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        order: 2;
+    }
+    
+    .main-content {
+        order: 1;
+    }
+}

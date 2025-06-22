@@ -1,89 +1,174 @@
 <?php
-// Include the header
-include_once 'includes/header.php';
+require_once 'config/database.php';
+require_once 'includes/session.php';
 
-// Variable to store error message
-$login_err = '';
+// Redirect if already logged in
+if (isLoggedIn()) {
+    $user_type = $_SESSION['user_type'];
+    header("Location: {$user_type}_dashboard.php");
+    exit();
+}
 
-// Process login form data when submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get username and password from form
-    $username = sanitizeInput($_POST["username"]);
-    $password = $_POST["password"];
+$error_message = '';
+
+if ($_POST && isset($_POST['login'])) {
+    $username = trim($_POST['username']);
+    $password = $_POST['password'];
+    $user_type = $_POST['user_type'];
     
-    // Validate if username and password are not empty
-    if (empty($username) || empty($password)) {
-        $login_err = "Please enter username and password.";
+    if (empty($username) || empty($password) || empty($user_type)) {
+        $error_message = 'All fields are required.';
     } else {
-        // Prepare a select statement
-        $sql = "SELECT user_id, username, password, user_type FROM users WHERE username = '$username'";
-        $result = mysqli_query($conn, $sql);
+        $database = new Database();
+        $db = $database->getConnection();
         
-        if ($result) {
-            if (mysqli_num_rows($result) == 1) {
-                $row = mysqli_fetch_assoc($result);
-                
-                // Verify the password
-                if ($password === $row["password"]) {
-
-                    // Password is correct, start a new session
-                    session_start();
-                    
-                    // Store data in session variables
-                    $_SESSION["user_id"] = $row["user_id"];
-                    $_SESSION["username"] = $row["username"];
-                    $_SESSION["user_type"] = $row["user_type"];
-                    
-                    // Redirect user based on user_type
-                    if ($row["user_type"] == "admin") {
-                        redirect("admin/index.php");
-                    } elseif ($row["user_type"] == "staff") {
-                        redirect("staff/index.php");
-                    } elseif ($row["user_type"] == "student") {
-                        redirect("student/index.php");
-                    }
-                } else {
-                    // Password is not valid
-                    $login_err = "Invalid username or password.";
-                }
-            } else {
-                // Username doesn't exist
-                $login_err = "Invalid username or password.";
+        // Get user from database (no password hashing)
+        $query = "SELECT u.*, 
+                  CASE 
+                    WHEN u.user_type = 'teacher' THEN t.full_name
+                    WHEN u.user_type = 'student' THEN s.full_name
+                    WHEN u.user_type = 'other_staff' THEN os.full_name
+                    ELSE u.username
+                  END as full_name
+                  FROM users u
+                  LEFT JOIN teachers t ON u.id = t.user_id
+                  LEFT JOIN students s ON u.id = s.user_id
+                  LEFT JOIN other_staff os ON u.id = os.user_id
+                  WHERE u.username = ? AND u.user_type = ? AND u.is_active = 1";
+        
+        $stmt = $db->prepare($query);
+        $stmt->execute([$username, $user_type]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($user && $user['password'] === $password) {
+            // Update last login
+            $update_query = "UPDATE users SET last_login = NOW() WHERE id = ?";
+            $update_stmt = $db->prepare($update_query);
+            $update_stmt->execute([$user['id']]);
+            
+            // Set session variables
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['user_type'] = $user['user_type'];
+            $_SESSION['full_name'] = $user['full_name'];
+            
+            // Remember me functionality
+            if (isset($_POST['remember_me'])) {
+                $token = bin2hex(random_bytes(32));
+                setcookie('remember_token', $token, time() + (30 * 24 * 60 * 60), '/'); // 30 days
             }
+            
+            // Redirect to appropriate dashboard
+            header("Location: {$user_type}_dashboard.php");
+            exit();
         } else {
-            $login_err = "Oops! Something went wrong. Please try again later.";
+            $error_message = 'Invalid username, password, or user type.';
         }
     }
 }
 ?>
 
-<div class="form-container">
-    <h2 class="form-title">Login</h2>
-    
-    <?php
-    if (!empty($login_err)) {
-        echo displayError($login_err);
-    }
-    ?>
-    
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Greenwood Academy</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">GA</div>
+                <div class="school-info">
+                    <h1>Greenwood Academy</h1>
+                    <p>Login to Your Account</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        
-        <div class="form-group">
-            <input type="submit" value="Login">
-        </div>
-    </form>
-</div>
+    </header>
 
-<?php
-// Include the footer
-include_once 'includes/footer.php';
-?>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <ul class="nav-links">
+                <li><a href="index.php">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="form-container fade-in">
+            <h2 style="text-align: center; color: var(--primary-dark); margin-bottom: 2rem;">Login to Your Account</h2>
+            
+            <?php if ($error_message): ?>
+                <div class="alert alert-danger"><?php echo $error_message; ?></div>
+            <?php endif; ?>
+            
+            <form method="POST" action="">
+                <div class="form-group">
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" name="username" class="form-control" required 
+                           value="<?php echo isset($_POST['username']) ? htmlspecialchars($_POST['username']) : ''; ?>">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user_type">User Type *</label>
+                    <select id="user_type" name="user_type" class="form-control" required>
+                        <option value="">Select User Type</option>
+                        <option value="admin" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] == 'admin') ? 'selected' : ''; ?>>Administrator</option>
+                        <option value="teacher" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] == 'teacher') ? 'selected' : ''; ?>>Teacher</option>
+                        <option value="student" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] == 'student') ? 'selected' : ''; ?>>Student</option>
+                        <option value="other_staff" <?php echo (isset($_POST['user_type']) && $_POST['user_type'] == 'other_staff') ? 'selected' : ''; ?>>Other Staff</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="remember_me"> Remember me for 30 days
+                    </label>
+                </div>
+                
+                <button type="submit" name="login" class="btn btn-primary" style="width: 100%;">Login</button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p>Don't have an account? Contact the administrator for registration.</p>
+                <p><strong>Demo Credentials:</strong><br>
+                   Admin: admin / admin123<br>
+                   Teacher: teacher1 / teacher123<br>
+                   Student: student1 / student123<br>
+                   Staff: staff1 / staff123</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Greenwood Academy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Add fade-in animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.querySelector('.form-container');
+            formContainer.style.opacity = '0';
+            formContainer.style.transform = 'translateY(20px)';
+            formContainer.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            
+            setTimeout(() => {
+                formContainer.style.opacity = '1';
+                formContainer.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
