@@ -275,20 +275,17 @@ if (isset($_GET['logout'])) {
             let grade = '';
             let color = '';
             
-            if (marks >= 90) {
-                grade = 'A+';
-                color = '#28a745';
-            } else if (marks >= 80) {
+            if (marks >= 75) {
                 grade = 'A';
                 color = '#28a745';
-            } else if (marks >= 70) {
+            } else if (marks >= 65) {
                 grade = 'B';
-                color = '#17a2b8';
-            } else if (marks >= 60) {
+                color = '#28a745';
+            } else if (marks >= 55) {
                 grade = 'C';
-                color = '#ffc107';
-            } else if (marks >= 50) {
-                grade = 'D';
+                color = '#17a2b8';
+            } else if (marks >= 35) {
+                grade = 'S';
                 color = '#fd7e14';
             } else if (marks >= 0) {
                 grade = 'F';

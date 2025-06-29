@@ -73,7 +73,7 @@ if ($_POST && isset($_POST['login'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Greenwood Academy</title>
+    <title>Login - Leeds International</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -83,7 +83,7 @@ if ($_POST && isset($_POST['login'])) {
             <div class="logo-section">
                 <div class="logo">GA</div>
                 <div class="school-info">
-                    <h1>Greenwood Academy</h1>
+                    <h1>Leeds International</h1>
                     <p>Login to Your Account</p>
                 </div>
             </div>
@@ -142,18 +142,13 @@ if ($_POST && isset($_POST['login'])) {
             
             <div style="text-align: center; margin-top: 2rem;">
                 <p>Don't have an account? Contact the administrator for registration.</p>
-                <p><strong>Demo Credentials:</strong><br>
-                   Admin: admin / admin123<br>
-                   Teacher: teacher1 / teacher123<br>
-                   Student: student1 / student123<br>
-                   Staff: staff1 / staff123</p>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Greenwood Academy. All rights reserved.</p>
+        <p>&copy; 2024 Leeds International. All rights reserved.</p>
     </footer>
 
     <script>

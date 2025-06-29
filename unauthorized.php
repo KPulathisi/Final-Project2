@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unauthorized Access - Greenwood Academy</title>
+    <title>Unauthorized Access - Leeds International</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
             <div class="logo-section">
                 <div class="logo">GA</div>
                 <div class="school-info">
-                    <h1>Greenwood Academy</h1>
+                    <h1>leeds international</h1>
                     <p>Access Denied</p>
                 </div>
             </div>
@@ -36,7 +36,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Greenwood Academy. All rights reserved.</p>
+        <p>&copy; 2024 Leeds International. All rights reserved.</p>
     </footer>
 </body>
 </html>

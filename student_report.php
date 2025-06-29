@@ -97,7 +97,7 @@ if (isset($_GET['logout'])) {
 
             <!-- Report Header -->
             <div class="card" style="text-align: center; margin-bottom: 2rem;">
-                <h1 style="color: var(--student-primary); margin-bottom: 0.5rem;">Greenwood Academy</h1>
+                <h1 style="color: var(--student-primary); margin-bottom: 0.5rem;">Leeds International</h1>
                 <h2 style="color: var(--student-secondary); margin-bottom: 1rem;">Academic Report Card</h2>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: left;">
                     <div>
@@ -140,20 +140,17 @@ if (isset($_GET['logout'])) {
                         $subject_average = $term_count > 0 ? round($term_total / $term_count, 2) : 0;
                         
                         // Calculate grade and remarks
-                        if ($subject_average >= 90) {
-                            $grade = 'A+';
-                            $remarks = 'Excellent';
-                        } elseif ($subject_average >= 80) {
+                        if ($subject_average >= 75) {
                             $grade = 'A';
-                            $remarks = 'Very Good';
-                        } elseif ($subject_average >= 70) {
+                            $remarks = 'Excellent';
+                        } elseif ($subject_average >= 65) {
                             $grade = 'B';
-                            $remarks = 'Good';
-                        } elseif ($subject_average >= 60) {
+                            $remarks = 'Very Good';
+                        } elseif ($subject_average >= 55) {
                             $grade = 'C';
-                            $remarks = 'Satisfactory';
-                        } elseif ($subject_average >= 50) {
-                            $grade = 'D';
+                            $remarks = 'Good';
+                        } elseif ($subject_average >= 35) {
+                            $grade = 'S';
                             $remarks = 'Needs Improvement';
                         } else {
                             $grade = 'F';
@@ -192,11 +189,10 @@ if (isset($_GET['logout'])) {
                                 <strong>Overall Average:</strong> <?php echo $overall_average; ?><br>
                                 <strong>Overall Grade:</strong> 
                                 <?php 
-                                if ($overall_average >= 90) echo 'A+';
-                                elseif ($overall_average >= 80) echo 'A';
-                                elseif ($overall_average >= 70) echo 'B';
-                                elseif ($overall_average >= 60) echo 'C';
-                                elseif ($overall_average >= 50) echo 'D';
+                                if ($overall_average >= 75) echo 'A';
+                                elseif ($overall_average >= 65) echo 'B';
+                                elseif ($overall_average >= 55) echo 'C';
+                                elseif ($overall_average >= 35) echo 'S';
                                 else echo 'F';
                                 ?><br>
                                 <strong>Subjects Taken:</strong> <?php echo count($marks_by_subject); ?>
@@ -256,12 +252,11 @@ if (isset($_GET['logout'])) {
                 <h3>Grading Scale</h3>
                 <div style="padding: 1rem;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem; text-align: center;">
-                        <div style="padding: 0.5rem; background: #d4edda; border-radius: 3px;"><strong>A+ (90-100)</strong><br>Excellent</div>
-                        <div style="padding: 0.5rem; background: #d1ecf1; border-radius: 3px;"><strong>A (80-89)</strong><br>Very Good</div>
-                        <div style="padding: 0.5rem; background: #fff3cd; border-radius: 3px;"><strong>B (70-79)</strong><br>Good</div>
-                        <div style="padding: 0.5rem; background: #ffeaa7; border-radius: 3px;"><strong>C (60-69)</strong><br>Satisfactory</div>
-                        <div style="padding: 0.5rem; background: #fdcb6e; border-radius: 3px;"><strong>D (50-59)</strong><br>Needs Improvement</div>
-                        <div style="padding: 0.5rem; background: #f8d7da; border-radius: 3px;"><strong>F (0-49)</strong><br>Unsatisfactory</div>
+                        <div style="padding: 0.5rem; background: #d4edda; border-radius: 3px;"><strong>A (75-100)</strong><br>Excellent</div>
+                        <div style="padding: 0.5rem; background: #d1ecf1; border-radius: 3px;"><strong>B (65-74)</strong><br>Very Good</div>
+                        <div style="padding: 0.5rem; background: #fff3cd; border-radius: 3px;"><strong>C (55-64)</strong><br>Good</div>
+                        <div style="padding: 0.5rem; background: #fdcb6e; border-radius: 3px;"><strong>S (35-54)</strong><br>Needs Improvement</div>
+                        <div style="padding: 0.5rem; background: #f8d7da; border-radius: 3px;"><strong>F (0-34)</strong><br>Unsatisfactory</div>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@ if (isset($_GET['logout'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Dashboard - Greenwood Academy</title>
+    <title>Staff Dashboard - Leeds International</title>
     <link rel="stylesheet" href="css/staff.css">
 </head>
 <body>
@@ -101,7 +101,7 @@ if (isset($_GET['logout'])) {
                         </tr>
                         <tr>
                             <td><strong>Email</strong></td>
-                            <td><?php echo htmlspecialchars($user['username']); ?>@greenwoodacademy.edu</td>
+                            <td><?php echo htmlspecialchars($user['username']); ?>@leedsinternational.edu</td>
                         </tr>
                     </tbody>
                 </table>
@@ -114,19 +114,19 @@ if (isset($_GET['logout'])) {
                     <tbody>
                         <tr>
                             <td><strong>Administration Office</strong></td>
-                            <td>(555) 123-4567 ext. 100</td>
+                            <td>047-123-4567 ext. 100</td>
                         </tr>
                         <tr>
                             <td><strong>IT Support</strong></td>
-                            <td>(555) 123-4567 ext. 200</td>
+                            <td>047-123-4567 ext. 200</td>
                         </tr>
                         <tr>
                             <td><strong>Human Resources</strong></td>
-                            <td>(555) 123-4567 ext. 300</td>
+                            <td>047-123-4567 ext. 300</td>
                         </tr>
                         <tr>
                             <td><strong>Emergency Contact</strong></td>
-                            <td>(555) 123-4567 ext. 911</td>
+                            <td>047-123-4567 ext. 911</td>
                         </tr>
                     </tbody>
                 </table>
@@ -141,7 +141,7 @@ if (isset($_GET['logout'])) {
                     <li><strong>Account Issues:</strong> Administration at ext. 100</li>
                     <li><strong>General Questions:</strong> Human Resources at ext. 300</li>
                 </ul>
-                <p>You can also email us at <strong>support@greenwoodacademy.edu</strong> for any assistance.</p>
+                <p>You can also email us at <strong>support@leedsinternational.edu</strong> for any assistance.</p>
             </div>
         </main>
     </div>

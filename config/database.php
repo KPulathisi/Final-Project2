@@ -1,5 +1,4 @@
 <?php
-// Database configuration
 class Database {
     private $host = 'localhost';
     private $db_name = 'school_management';

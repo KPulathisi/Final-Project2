@@ -195,17 +195,17 @@ if (isset($_GET['logout'])) {
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                         <div style="text-align: center; padding: 1rem; background: #fef2f2; border-radius: 5px;">
                             <h4 style="color: var(--staff-primary);">Administration</h4>
-                            <p><strong>(555) 123-4567 ext. 100</strong></p>
+                            <p><strong>047-123-4567 ext. 100</strong></p>
                             <small>General inquiries and support</small>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: #fef2f2; border-radius: 5px;">
                             <h4 style="color: var(--staff-primary);">IT Support</h4>
-                            <p><strong>(555) 123-4567 ext. 200</strong></p>
+                            <p><strong>047-123-4567 ext. 200</strong></p>
                             <small>Technical issues and system help</small>
                         </div>
                         <div style="text-align: center; padding: 1rem; background: #fef2f2; border-radius: 5px;">
                             <h4 style="color: var(--staff-primary);">Human Resources</h4>
-                            <p><strong>(555) 123-4567 ext. 300</strong></p>
+                            <p><strong>047-123-4567 ext. 300</strong></p>
                             <small>HR policies and procedures</small>
                         </div>
                     </div>

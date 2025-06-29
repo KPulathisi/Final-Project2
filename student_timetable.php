@@ -103,14 +103,14 @@ if (isset($_GET['logout'])) {
                     if (isset($timetable[$today])):
                         $today_schedule = $timetable[$today];
                         $periods = [
-                            1 => '08:00 - 08:45',
-                            2 => '08:45 - 09:30',
-                            3 => '09:30 - 10:15',
-                            4 => '10:30 - 11:15',
-                            5 => '11:15 - 12:00',
-                            6 => '12:00 - 12:45',
-                            7 => '13:30 - 14:15',
-                            8 => '14:15 - 15:00'
+                            1 => '07:50 - 08:30',
+                            2 => '08:30 - 09:10',
+                            3 => '09:10 - 09:50',
+                            4 => '09:50 - 10:30',
+                            5 => '10:50 - 11:30',
+                            6 => '11:30 - 12:10',
+                            7 => '12:10 - 12:50',
+                            8 => '12:50 - 13:30'
                         ];
                         
                         $has_classes = false;
@@ -157,14 +157,14 @@ if (isset($_GET['logout'])) {
                     <tbody>
                         <?php 
                         $periods = [
-                            1 => '08:00 - 08:45',
-                            2 => '08:45 - 09:30',
-                            3 => '09:30 - 10:15',
-                            4 => '10:30 - 11:15',
-                            5 => '11:15 - 12:00',
-                            6 => '12:00 - 12:45',
-                            7 => '13:30 - 14:15',
-                            8 => '14:15 - 15:00'
+                            1 => '07:50 - 08:30',
+                            2 => '08:30 - 09:10',
+                            3 => '09:10 - 09:50',
+                            4 => '09:50 - 10:30',
+                            5 => '10:50 - 11:30',
+                            6 => '11:30 - 12:10',
+                            7 => '12:10 - 12:50',
+                            8 => '12:50 - 13:30'
                         ];
                         
                         $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -203,19 +203,19 @@ if (isset($_GET['logout'])) {
 
             <!-- Break Times -->
             <div class="card">
-                <h3>Break Times</h3>
+                <h3>Interval</h3>
                 <div style="padding: 1rem;">
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                         <div style="text-align: center; padding: 1rem; background: #f0f9ff; border-radius: 5px;">
-                            <h4 style="color: var(--student-primary);">Morning Break</h4>
-                            <p style="font-size: 1.2rem; font-weight: bold;">10:15 - 10:30</p>
-                            <small>15 minutes</small>
+                            <!-- <h4 style="color: var(--student-primary);">Interval</h4> -->
+                            <p style="font-size: 1.2rem; font-weight: bold;">10:30 - 10:50</p>
+                            <small>20 minutes</small>
                         </div>
-                        <div style="text-align: center; padding: 1rem; background: #f0f9ff; border-radius: 5px;">
-                            <h4 style="color: var(--student-primary);">Lunch Break</h4>
-                            <p style="font-size: 1.2rem; font-weight: bold;">12:45 - 13:30</p>
+                        <!-- <div style="text-align: center; padding: 1rem; background: #f0f9ff; border-radius: 5px;">
+                            <h4 style="color: var(--student-primary);">Meditation</h4>
+                            <p style="font-size: 1.2rem; font-weight: bold;">10:45 - 10:50</p>
                             <small>45 minutes</small>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

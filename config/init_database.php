@@ -1,17 +1,14 @@
 <?php
-// Database initialization script
 $host = 'localhost';
 $username = 'root';
 $password = '2001';
 $database = 'school_management';
 
 try {
-    // Create database if not exists
     $pdo = new PDO("mysql:host=$host", $username, $password);
     $pdo->exec("CREATE DATABASE IF NOT EXISTS $database");
     $pdo->exec("USE $database");
     
-    // Users table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,7 +22,6 @@ try {
         )
     ");
 
-    // Teachers table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS teachers (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,7 +38,6 @@ try {
         )
     ");
 
-    // Other staff table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS other_staff (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -55,7 +50,6 @@ try {
         )
     ");
 
-    // Students table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS students (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -70,7 +64,6 @@ try {
         )
     ");
 
-    // Timetables table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS timetables (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -103,7 +96,6 @@ try {
         )
     ");
 
-    // Attendance table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS attendance (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -117,7 +109,6 @@ try {
         )
     ");
 
-    // Marks table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS marks (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -133,7 +124,6 @@ try {
         )
     ");
 
-    // Achievements table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS achievements (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -148,7 +138,6 @@ try {
         )
     ");
 
-    // Events table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS events (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -162,7 +151,6 @@ try {
         )
     ");
 
-    // Feedback table
     $pdo->exec("
         CREATE TABLE IF NOT EXISTS feedback (
             id INT AUTO_INCREMENT PRIMARY KEY,
@@ -174,13 +162,11 @@ try {
         )
     ");
 
-    // Insert default admin user (no password hashing)
     $pdo->exec("
         INSERT IGNORE INTO users (username, password, user_type, email) 
         VALUES ('admin', 'admin123', 'admin', 'admin@school.com')
     ");
 
-    // Insert sample teacher
     $pdo->exec("
         INSERT IGNORE INTO users (username, password, user_type, email) 
         VALUES ('teacher1', 'teacher123', 'teacher', 'teacher1@school.com')
@@ -191,7 +177,6 @@ try {
         VALUES (2, 'T001', 'John Smith', 'advanced', 'Mathematics, Physics', 1, '10A')
     ");
 
-    // Insert sample student
     $pdo->exec("
         INSERT IGNORE INTO users (username, password, user_type, email) 
         VALUES ('student1', 'student123', 'student', 'student1@school.com')
@@ -202,7 +187,6 @@ try {
         VALUES (3, 'S001', 'Alice Johnson', '10A', 'Robert Johnson', '555-0123')
     ");
 
-    // Insert sample other staff
     $pdo->exec("
         INSERT IGNORE INTO users (username, password, user_type, email) 
         VALUES ('staff1', 'staff123', 'other_staff', 'staff1@school.com')

@@ -181,11 +181,11 @@ if (isset($_GET['logout'])) {
                 <div class="card">
                     <h3>Important Contacts</h3>
                     <div style="padding: 1rem;">
-                        <p><strong>Administration:</strong> (555) 123-4567 ext. 100</p>
-                        <p><strong>IT Support:</strong> (555) 123-4567 ext. 200</p>
-                        <p><strong>Human Resources:</strong> (555) 123-4567 ext. 300</p>
-                        <p><strong>Emergency:</strong> (555) 123-4567 ext. 911</p>
-                        <p><strong>Main Office:</strong> info@greenwoodacademy.edu</p>
+                        <p><strong>Administration:</strong> 047-123-4567 ext. 100</p>
+                        <p><strong>IT Support:</strong> 047-123-4567 ext. 200</p>
+                        <p><strong>Human Resources:</strong> 047-123-4567 ext. 300</p>
+                        <p><strong>Emergency:</strong> 047-123-4567 ext. 911</p>
+                        <p><strong>Main Office:</strong> info@leedsinternational.edu</p>
                     </div>
                 </div>
             </div>

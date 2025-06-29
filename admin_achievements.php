@@ -124,7 +124,6 @@ if (isset($_GET['logout'])) {
                             <th>Date</th>
                             <th>Description</th>
                             <th>Added By</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -145,9 +144,6 @@ if (isset($_GET['logout'])) {
                                 </div>
                             </td>
                             <td><?php echo htmlspecialchars($achievement['added_by_user']); ?></td>
-                            <td>
-                                <button class="btn btn-primary" style="font-size: 0.8rem; padding: 0.3rem 0.8rem;">Edit</button>
-                            </td>
                         </tr>
                         <?php endforeach; ?>
                         

@@ -43,7 +43,7 @@ $recent_achievements = $achievements_stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenwood Academy - Excellence in Education</title>
+    <title>Leeds International - Excellence in Education</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -55,7 +55,7 @@ $recent_achievements = $achievements_stmt->fetchAll(PDO::FETCH_ASSOC);
                      <image src = "logo.jpeg" height ="60px" weight = "60px">
                 </div>
                 <div class="school-info">
-                    <h1>Greenwood Academy</h1>
+                    <h1>Leeds International</h1>
                     <p>Excellence in Education Since 1985</p>
                 </div>
             </div>
@@ -79,8 +79,8 @@ $recent_achievements = $achievements_stmt->fetchAll(PDO::FETCH_ASSOC);
     <main class="container">
         <!-- Hero Section -->
         <section class="hero-section fade-in">
-            <h2>Welcome to Greenwood Academy</h2>
-            <p>Nurturing young minds for a brighter tomorrow. Our commitment to academic excellence, character development, and holistic education has made us a leading institution in the region.</p>
+            <h2>Welcome to Leeds International</h2>
+            <p>Nurturing young minds for a brighter tomorrow. Our commitment to academic excellence, character development, and holistic education has made us a leading institution in Sri Lanka.</p>
         </section>
 
         <!-- About Us Section -->
@@ -88,7 +88,7 @@ $recent_achievements = $achievements_stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="cards-grid">
                 <div class="card">
                     <h3>Our History</h3>
-                    <p>Founded in 1985, Greenwood Academy has been serving the community for over 35 years. We started with just 50 students and have grown to accommodate over 1,000 students from kindergarten through grade 12.</p>
+                    <p>Founded in 1985, Leads International has been serving the community for over 35 years. We started with just 50 students and have grown to accommodate over 1,000 students from kindergarten through grade 12.</p>
                 </div>
                 <div class="card">
                     <h3>Our Mission</h3>
@@ -171,15 +171,15 @@ $recent_achievements = $achievements_stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="cards-grid">
                 <div class="card">
                     <h3>Address</h3>
-                    <p>123 Education Street<br>Greenwood City, GW 12345<br>United States</p>
+                    <p>No.23/D<br>Tangalle Road,Kahawaththa,<br>Beliaththa</p>
                 </div>
                 <div class="card">
                     <h3>Phone & Email</h3>
-                    <p>Phone: (555) 123-4567<br>Email: info@greenwoodacademy.edu<br>Fax: (555) 123-4568</p>
+                    <p>Phone: 047-1234567<br>Email: info@leedsinternational.edu<br>Fax: 047-1234569</p>
                 </div>
                 <div class="card">
                     <h3>Office Hours</h3>
-                    <p>Monday - Friday: 8:00 AM - 4:00 PM<br>Saturday: 9:00 AM - 12:00 PM<br>Sunday: Closed</p>
+                    <p>Monday - Saturday: 8:00 AM - 4:00 PM<br>Sunday: Closed</p>
                 </div>
             </div>
 
@@ -208,7 +208,7 @@ $recent_achievements = $achievements_stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Greenwood Academy. All rights reserved. | Excellence in Education Since 1985</p>
+        <p>&copy; 2024 Leeds International. All rights reserved. | Excellence in Education Since 1985</p>
     </footer>
 
     <script>
