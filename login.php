@@ -81,7 +81,7 @@ if ($_POST && isset($_POST['login'])) {
     <header class="header">
         <div class="header-content">
             <div class="logo-section">
-                <div class="logo">GA</div>
+                <div class="logo"><image src = "logo.jpeg" height ="60px" weight = "60px"></div>
                 <div class="school-info">
                     <h1>Leeds International</h1>
                     <p>Login to Your Account</p>
